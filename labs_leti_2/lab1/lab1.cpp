@@ -2,24 +2,32 @@
 #include <stack.h>
 using namespace std;
 
-int n = 1;
-
-int main() {
+int main()
+{
 	setlocale(LC_ALL, "RU");
-	Stack <int> T;
-	while (n != 0) {
+	Stack<int> stack;
+	int input = 1;
+	while (input != 0) 
+	{
 		cout << "Введите число последовательности: ";
-		cin >> n;
-		T.push(n);
+		cin >> input;
+		if (input != 0) 
+		{
+			stack.push(input);
+		}
 	}
-	while (T.count()) {
-		if (T.peek() > 0)
+	while (stack.count()) 
+	{
+		if (stack.peek() > 0) 
 		{
 			cout << "Числа последовательности: "
-				<< T.peek() 
+				<< stack.pop()
 				<< endl;
 		}
-		T.pop();
+		else 
+		{
+			stack.pop();
+		}
 	}
 	return 0;
 }

@@ -1,58 +1,70 @@
 #pragma once
 
-template <typename T>
-struct Stack
+template <typename T> ///  Объявление шаблона. Ключевое слово typename говорит о том, что в шаблоне будет использоваться встроенный тип данных.
+class Stack /// Объявление связанного класса Stack, который может работать с любым типом данных
 {
-	struct Container {
+private:
+	struct Container 
+	{
 		T data;
 		Container* next;
 	};
+public:
+	Container* top = nullptr; /// Указатель на верхний элемент стека. Изначально он равен nullptr, что означает, что стек пуст.
+	int counter = 0; /// Счетчик, который отслеживает количество элементов в стеке.
 
-	Container* top = nullptr;
-	int counter = 0;
-
-	void push(T value) {
-		Container* temp = new Container();
-		temp->data = value;
-		temp->next = top;
-		top = temp;
-		counter++;
+	void push(T value) 
+	{ ///Метод для добавления элемента в стек.
+		Container* temp = new Container(); 
+		temp->data = value; /// Создается новый элемент Container, который хранит значение value.
+		temp->next = top; /// Новый элемент указывает на текущий верхний элемент стека (top).
+		top = temp; /// Указатель top обновляется, чтобы указывать на новый элемент.
+		counter++; /// Увеличивается счетчик counter.
 	}
 
-	T pop() {
-		if (top == nullptr) {
-			throw "Stack is empty!";
+	T pop()
+	{ /// Метод для удаления верхнего элемента из стека и возвращения его значения.
+		if (top == nullptr) 
+		{
+			throw "Stack is empty!"; /// Если стек пуст (т.е. top равен nullptr), выбрасывается исключение с сообщением "Stack is empty!".
+		}
+		Container* temp = top->next; /// Указатель temp сохраняет следующий элемент после верхнего.
+		T value = top->data; /// Значение верхнего элемента сохраняется в переменной value.
+		delete top; /// Удаляется верхний элемент стека.
+		top = temp; /// Указатель top обновляется, чтобы указывать на следующий элемент.
+		counter--; /// Уменьшается счетчик counter.
+		return value; /// Возвращается значение верхнего элемента.
+	}
+
+	T peek() /// Метод для получения значения верхнего элемента стека без его удаления.
+	{ 
+		if (top == nullptr) 
+		{
+			throw "Stack is empty!"; /// Если стек пуст, выбрасывается исключение с сообщением "Stack is empty!".
 		}
 		Container* temp = top->next;
 		T value = top->data;
-		delete top;
-		top = temp;
-		counter--;
-		return value;
+		return value; /// Возвращается значение верхнего элемента, не изменяя структуру стека.
 	}
 
-	T peek()
+	int count() const /// Метод для получения текущего количества элементов в стеке.
 	{
-		if (top == nullptr) {
-			throw "Stack is empty!";
-		}
-		Container* temp = top->next;
-		T value = top->data;
-		return value;
+		return counter; /// Возвращает значение counter.
 	}
 
-	int count()
-	{
-		return counter;
+	~stack() 
+	{ /// Деструктор: вызывается при уничтожении объекта стека.
+		clear(); /// Вызывает метод clear, чтобы удалить все элементы из колллекции
 	}
 
-	void clear()
+	void clear() /// Метод для очистки стека, удаляя все элементы.
 	{
-		while (top != nullptr) {
+		while (top != nullptr) 
+		{ /// В цикле, пока top не равен nullptr, удаляются элементы стека.
 			Container* temp = top->next;
 			delete top;
-			top = temp;
+			top = temp; /// Указатель top обновляется, чтобы указывать на следующий элемент.
 		}
-		counter = 0;
+		counter = 0; /// Счетчик counter сбрасывается на 0.
 	}
 };
