@@ -6,7 +6,7 @@ int n = 1;
 
 int main() {
 	setlocale(LC_ALL, "RU");
-	Stack <int> T;
+	Stack<int> T;
 	while (n != 0) {
 		cout << "Введите число последовательности: ";
 		cin >> n;
