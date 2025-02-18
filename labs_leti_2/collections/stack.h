@@ -10,19 +10,27 @@ template <typename T>
 class Stack
 {
 private:
-    /// <summary>
-    /// Структура Container представляет элемент стека.
-    /// </summary>
+
     struct Container
     {
-        T data; ///< Данные, хранящиеся в элементе стека.
-        Container* next; ///< Указатель на следующий элемент стека.
+        T data; 
+        Container* next; 
     };
+
+    Container* top = nullptr; 
+
+    int counter = 0; 
+
+  
 public:
 
-    Container* top = nullptr; ///< Указатель на верхний элемент стека. Изначально равен nullptr.
-    int counter = 0; ///< Счетчик элементов в стеке.
-
+    /// <summary>
+    /// Освобождает память, занятую элементами стека.
+    /// </summary>
+    ~Stack()
+    {
+        clear();
+    }
     /// <summary>
     /// Добавляет элемент в стек.
     /// </summary>
@@ -76,14 +84,6 @@ public:
     int count() const
     {
         return counter;
-    }
-
-    /// <summary>
-    /// Освобождает память, занятую элементами стека.
-    /// </summary>
-    ~Stack()
-    {
-        clear();
     }
 
     /// <summary>

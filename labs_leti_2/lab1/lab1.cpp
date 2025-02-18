@@ -18,16 +18,16 @@ int main()
 	}
 	while (stack.count()) 
 	{
-		if (stack.peek() > 0) 
+		int num = stack.pop();
+		if (num > 0) 
 		{
 			cout << "Числа последовательности: "
-				<< stack.pop()
+				<< num
 				<< endl;
-		}
-		else 
-		{
-			stack.pop();
 		}
 	}
 	return 0;
 }
+
+
+
