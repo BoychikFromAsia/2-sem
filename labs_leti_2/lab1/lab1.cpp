@@ -16,6 +16,7 @@ int main()
 			stack.push(input);
 		}
 	}
+
 	while (stack.count()) 
 	{
 		int num = stack.pop();
@@ -28,6 +29,3 @@ int main()
 	}
 	return 0;
 }
-
-
-

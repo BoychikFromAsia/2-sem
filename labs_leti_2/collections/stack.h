@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stdexcept>
-
+using namespace std;
 /// <summary>
 /// Класс Stack реализует стек с использованием связного списка.
 /// Стек работает по принципу "последний пришел — первый вышел" (LIFO).
@@ -17,13 +17,11 @@ private:
         Container* next; 
     };
 
-    Container* top = nullptr; 
-
-    int counter = 0; 
-
-  
 public:
 
+    Container* top = nullptr;
+
+    int counter = 0;
     /// <summary>
     /// Освобождает память, занятую элементами стека.
     /// </summary>
@@ -53,7 +51,7 @@ public:
     {
         if (top == nullptr)
         {
-            throw std::runtime_error("Stack is empty!");
+            throw ("Stack is empty!");
         }
         Container* temp = top->next;
         T value = top->data;
@@ -72,7 +70,7 @@ public:
     {
         if (top == nullptr)
         {
-            throw std::runtime_error("Stack is empty!");
+            throw ("Stack is empty!");
         }
         return top->data;
     }
