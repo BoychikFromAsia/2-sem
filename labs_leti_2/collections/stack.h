@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdexcept>
+
 using namespace std;
 /// <summary>
 /// Класс Stack реализует стек с использованием связного списка.
@@ -17,11 +18,11 @@ private:
         Container* next; 
     };
 
-public:
-
     Container* top = nullptr;
 
     int counter = 0;
+
+public:
     /// <summary>
     /// Освобождает память, занятую элементами стека.
     /// </summary>
