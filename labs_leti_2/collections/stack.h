@@ -11,7 +11,6 @@ template <typename T>
 class Stack
 {
 private:
-
     struct Container
     {
         T data;
