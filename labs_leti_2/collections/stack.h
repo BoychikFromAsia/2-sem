@@ -79,6 +79,7 @@ public:
     {
         return counter;
     }
+
     /// <summary>
     /// Очищает стек, удаляя все элементы.
     /// </summary>
