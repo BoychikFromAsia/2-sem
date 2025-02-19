@@ -28,6 +28,7 @@ public:
     {
         clear();
     }
+
     /// <summary>
     /// Добавляет элемент в стек.
     /// </summary>
