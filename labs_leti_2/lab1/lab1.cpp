@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "RU");
-	Stack <int> stack;
+	Stack<int> stack;
 	int input = 1;
 	while (input != 0) 
 	{
