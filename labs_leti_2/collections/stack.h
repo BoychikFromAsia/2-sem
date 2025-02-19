@@ -14,12 +14,11 @@ private:
 
     struct Container
     {
-        T data; 
-        Container* next; 
+        T data;
+        Container* next;
     };
 
     Container* top = nullptr;
-
     int counter = 0;
 
 public:
@@ -42,7 +41,6 @@ public:
         top = temp;
         counter++;
     }
-
     /// <summary>
     /// Удаляет верхний элемент из стека и возвращает его значение.
     /// </summary>
@@ -61,7 +59,6 @@ public:
         counter--;
         return value;
     }
-
     /// <summary>
     /// Возвращает значение верхнего элемента стека без его удаления.
     /// </summary>
@@ -75,7 +72,6 @@ public:
         }
         return top->data;
     }
-
     /// <summary>
     /// Возвращает текущее количество элементов в стеке.
     /// </summary>
@@ -84,7 +80,6 @@ public:
     {
         return counter;
     }
-
     /// <summary>
     /// Очищает стек, удаляя все элементы.
     /// </summary>

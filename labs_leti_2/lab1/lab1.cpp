@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <stack.h>
+
 using namespace std;
 
 int main()
@@ -22,9 +23,8 @@ int main()
 		int num = stack.pop();
 		if (num > 0) 
 		{
-			cout << "Числа последовательности: "
-				<< num
-				<< endl;
+			cout << "Числа последовательности: " 
+				<< num << endl;
 		}
 	}
 	return 0;
