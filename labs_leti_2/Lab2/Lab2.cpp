@@ -7,11 +7,8 @@ int main()
 {
 	setlocale(LC_ALL, "RU");
 	Queue <int> queue;
-	int input;
 	int choice;
 	int menu = 1;
-	int temp_num;
-	int check_num;
 	int counter = 0;
 	while (menu != 0)
 	{
@@ -28,6 +25,7 @@ int main()
 		switch (choice)
 		{
 		case 1: 
+			int input;
 			cout << "Введите элемент для добавление в очередь: "
 				<< endl;
 			cin >> input;
@@ -50,6 +48,7 @@ int main()
 			break;
 
 		case 5:  
+			int temp_num;
 			for (int i=0;i < queue.count();i++)
 			{
 				temp_num = queue.unqueue();
@@ -78,6 +77,7 @@ int main()
 			break;
 
 		case 7: 
+			int check_num;
 			cout << "Введите число для проверки: ";
 			cin >> check_num;
 			for (int i = 0; i < queue.count();i++)
@@ -110,7 +110,7 @@ int main()
 			break;
 
 		default:
-			cout << "error \n";
+			cout << "Нет такой операции \n";
 			break;
 		}
 	}
