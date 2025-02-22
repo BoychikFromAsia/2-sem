@@ -1,9 +1,11 @@
 #pragma once
-
-//#include <stdexcept>
+#include <stdexcept>
 
 using namespace std;
-
+/// <summary>
+/// Класс Stack реализует стек с использованием связного списка.
+/// Стек работает по принципу "последний пришел — первый вышел" (LIFO).
+/// </summary>
 template <typename T>
 class Queue
 {
@@ -16,18 +18,29 @@ private:
 		
 	};
 
-	Container* top = nullptr;
-	Container* bottom = nullptr;
-	int counter = 0;
+	Container* top;
+	Container* bottom;
+	int counter;
 
 public: 
+	/// <summary>
+	/// Конструктор, инициализирующий пустую очередь.
+	/// </summary>
+	Queue() : top(nullptr), bottom(nullptr), counter(0) {}
 
+	/// <summary>
+	/// Деструктор, который освобождает все выделенные ресурсы.
+	/// </summary>
 	~Queue()
 	{
 		clear();
 	}
 
-	void queue(T value) // добавляет элемент в очередь
+	/// <summary>
+	/// Добавляет элемент в очередь.
+	/// </summary>
+	/// <param name="value">Элемент, который будет добавлен в очередь.</param>
+	void queue(T value) 
 	{
 		Container* temp = new Container();
 		temp->data = value;
@@ -46,7 +59,12 @@ public:
 		counter++;
 	}
 
-	T unqueue() // извлекает элемент из очереди
+	/// <summary>
+	/// Извлекает элемент из очереди.
+	/// </summary>
+	/// <returns>Возвращает извлеченный элемент.</returns>
+	/// <exception cref="std::runtime_error">Выбрасывается, если очередь пуста.</exception>
+	T unqueue() 
 	{
 		if (top == nullptr)
 		{
@@ -64,12 +82,19 @@ public:
 		return value;
 	}
 
-	int count() const // возвращает количество элементов коллекции
+	/// <summary>
+	/// Возвращает количество элементов в очереди.
+	/// </summary>
+	/// <returns>Количество элементов в очереди.</returns>
+	int count() const 
 	{
 		return counter;
 	}
 
-	void clear() //  удаляет все элементы коллекции
+	/// <summary>
+	/// Удаляет все элементы из очереди.
+	/// </summary>
+	void clear() 
 	{
 		while (top != 0)
 		{

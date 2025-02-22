@@ -7,90 +7,108 @@ int main()
 {
 	setlocale(LC_ALL, "RU");
 	Queue <int> queue;
-	int input = 1;
+	int input;
 	int choice;
 	int menu = 1;
+	int temp_num;
+	int check_num;
+	int counter = 0;
 	while (menu != 0)
 	{
 		cout << "Выберите операцию: \n"
-			<< "1 - Ввод чисел \n"
-			<< "2 - Вывод чисел \n"
-			<< "3 - Вставка единицы перед отрицательным числом \n"
-			<< "4 - Удаление элементов с отрицательное информационной частью \n"
-			<< "5 - Количество вхождений в очередь \n"
-			<< "6 - Удаление всех элементов \n"
-			<< "7 - Закрыть меню \n";
-		cin >> choice;;
-	
+			<< "1 - Добавление одного элемента \n"
+			<< "2 - Извлечение одного элемента \n"
+			<< "3 - Возвращение количества элементов коллекции \n"
+			<< "4 - Удаление всех элементов коллекции \n"
+			<< "5 - Вставка перед отрицательным числом элемент со значением 1 \n"
+			<< "6 - Удаление всех отрицательных элементов коллекции \n"
+			<< "7 - Подсчет колиества вхождения в очередь значения \n"
+			<< "8 - Закрыть меню \n";
+		cin >> choice;
 		switch (choice)
 		{
-			
-		case 1: // ввод последовательности
-			while (input != 0)
-			{
-				cout << "Введите числа последовательности: ";
-				cin >> input;
-				if (input != 0)
-				{
-					queue.queue(input);
-				}
-			}
+		case 1: 
+			cout << "Введите элемент для добавление в очередь: "
+				<< endl;
+			cin >> input;
+			queue.queue(input);
 			break;
 
-
-		case 2: // вывод последовательности
-			while (queue.count() > 0)
-			{
-				cout << "Числа последовательности: "
-					<< queue.unqueue()
-					<< endl;
-			}
-			break;
-			
-
-		case 3: //вставка перед каждым отрицательным числом очереди элемента со значением 1
-			while (queue.count())
-			{
-				if (queue.unqueue() < 0)
-				{
-					cout << "1 "
-						<< queue.unqueue()
-						<< endl;
-				}
-				else if (queue.unqueue() > 0)
-				{
-					cout << queue.unqueue()
-						<< endl;
-				}
-			}
+		case 2: 
+			cout << "Вы извлекаете один элемент из очереди: "
+				<< queue.unqueue()
+				<< endl;
 			break;
 
-		case 4: //удаление из очереди всех элементов с отрицательной информационной частью
-			while (queue.count())
-			{
-				if (queue.unqueue() < 0)
-				{
-					queue.unqueue();
-				}
-				else
-				{
-					continue;
-				}
-			}
-			break;
-
-		case 5: // подсчет количества вхождений в очередь значения введенного пользователем
+		case 3: 
 			cout << queue.count()
-				<<endl;
+				<< endl;
 			break;
 
-		case 6: // удаление всех элементов 
+		case 4: 
 			queue.clear();
 			break;
 
-		case 7: //закрыть меню
+		case 5:  
+			for (int i=0;i < queue.count();i++)
+			{
+				temp_num = queue.unqueue();
+				if (temp_num < 0)
+				{
+					queue.queue(1);
+					i++;
+				}
+				queue.queue(temp_num);
+			}
+			break;
+
+		case 6: 
+			for (int i = 0; i < queue.count();i++)
+			{
+				int temp_num = queue.unqueue();
+				if (temp_num >= 0)
+				{
+					queue.queue(temp_num);
+				}
+				else 
+				{
+					i--;
+				}
+			}
+			break;
+
+		case 7: 
+			cout << "Введите число для проверки: ";
+			cin >> check_num;
+			for (int i = 0; i < queue.count();i++)
+			{
+				int temp_num = queue.unqueue();
+				queue.queue(temp_num);
+				if (temp_num == check_num)
+				{
+					counter++;
+				}
+			}
+			if (counter != 0)
+			{
+				cout << "Число "
+					<< check_num
+					<< " встречается "
+					<< counter
+					<< " раз/раза."
+					<< endl;
+			}
+			else
+			{
+				cout << "Данное число не встречается в очереди."
+					<<endl;
+			}
+			break;
+
+		case 8: 
 			menu = 0;
 			break;
+
 		default:
 			cout << "error \n";
 			break;
@@ -98,4 +116,3 @@ int main()
 	}
 	return 0;
 }
-	
