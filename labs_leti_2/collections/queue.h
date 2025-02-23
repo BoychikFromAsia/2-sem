@@ -1,5 +1,6 @@
 #pragma once
 #include <stdexcept>
+#include <container.h>
 
 using namespace std;
 
@@ -12,15 +13,8 @@ class Queue
 {
 private:
 
-	struct Container
-	{
-		T data;
-		Container* next;
-
-	};
-
-	Container* top;
-	Container* bottom;
+	Container<T>* top;
+	Container<T>* bottom;
 	int counter;
 
 public:
@@ -43,12 +37,12 @@ public:
 	/// <param name="value">Элемент, который будет добавлен в очередь.</param>
 	void queue(T value)
 	{
-		Container* temp = new Container();
+		Container<T>* temp = new Container<T>;
 		temp->data = value;
+		temp->next = nullptr;
 
 		if (bottom == nullptr)
 		{
-			temp->next = bottom;
 			bottom = temp;
 			top = temp;
 		}
@@ -67,15 +61,11 @@ public:
 	/// <exception cref="std::runtime_error">Выбрасывается, если очередь пуста.</exception>
 	T unqueue()
 	{
-		if (top == nullptr)
-		{
-			throw "queue is empty";
-		}
 		if (bottom == nullptr)
 		{
 			throw "queue is empty";
 		}
-		Container* temp = bottom->next;
+		Container<T>* temp = bottom->next;
 		T value = bottom->data;
 		delete bottom;
 		bottom = temp;
@@ -99,7 +89,7 @@ public:
 	{
 		while (top != 0)
 		{
-			Container* temp = top->next;
+			Container<T>* temp = top->next;
 			delete top;
 			top = temp;
 		}

@@ -3,31 +3,31 @@
 
 using namespace std;
 
-template <typename T>
-void insertBeforeNegatives(Queue<T>& queue)
+void insertBeforeNegatives(Queue<int>& queue)
 {
-	int temp_num;
-	for (int i = 0;i < queue.count();i++)
+	int tempNum;
+	int count = queue.count();
+	for (int i = 0; i < queue.count();i++)
 	{
-		temp_num = queue.unqueue();
-		if (temp_num < 0)
+		tempNum = queue.unqueue();
+		if (tempNum < 0)
 		{
 			queue.queue(1);
 			i++;
 		}
-		queue.queue(temp_num);
+		queue.queue(tempNum);
 	}
 }
 
-template <typename T>
-void removeNegatives(Queue<T>& queue)
+void removeNegatives(Queue<int>& queue)
 {
-	for (int i = 0; i < queue.count();i++)
+	int count = queue.count();
+	for (int i = 0; i < queue.count(); i++)
 	{
-		T temp_num = queue.unqueue();
-		if (temp_num >= 0)
+		int tempNum = queue.unqueue();
+		if (tempNum >= 0)
 		{
-			queue.queue(temp_num);
+			queue.queue(tempNum);
 		}
 		else
 		{
@@ -36,17 +36,18 @@ void removeNegatives(Queue<T>& queue)
 	}
 }
 
-template <typename T>
-int countOccurrences(Queue<T>& queue, T counter)
+int countOccurrences(Queue<int>& queue, int counter)
 {
-	int check_num;
+	int checkNum;
 	cout << "Введите число для проверки: ";
-	cin >> check_num;
-	for (int i = 0; i < queue.count();i++)
+
+	cin >> checkNum;
+	counter = 0;
+	for (int i = 0; i < queue.count(); i++)
 	{
-		int temp_num = queue.unqueue();
-		queue.queue(temp_num);
-		if (temp_num == check_num)
+		int tempNum = queue.unqueue();
+		queue.queue(tempNum);
+		if (tempNum == checkNum)
 		{
 			counter++;
 		}
@@ -54,7 +55,7 @@ int countOccurrences(Queue<T>& queue, T counter)
 	if (counter != 0)
 	{
 		cout << "Число "
-			<< check_num
+			<< checkNum
 			<< " встречается "
 			<< counter
 			<< " раз/раза."
@@ -85,24 +86,23 @@ int main()
 {
 	setlocale(LC_ALL, "RU");
 	Queue <int> queue;
-	int choice;
-	int counter = 0;
 	while (true)
 	{
+		int choice;
+		int counter = 0;
 		displayMenu();
 		cin >> choice;
 		switch (choice)
 		{
 		case 1: 
 			int input;
-			cout << "Введите элемент для добавление в очередь: "
-				<< endl;
+			cout << "Введите элемент для добавление в очередь: ";
 			cin >> input;
 			queue.queue(input);
 			break;
 
 		case 2: 
-			cout << "Вы извлекаете один элемент из очереди: "
+			cout << "Из очереди было извлечено значение: "
 				<< queue.unqueue()
 				<< endl;
 			break;
