@@ -45,6 +45,10 @@ int countOccurrences(Queue<int>& queue, int checkNum)
 			counter++;
 		}
 	}
+	return counter;
+}
+
+void displayOccurrences(int checkNum, int counter) {
 	if (counter != 0)
 	{
 		cout << "Число "
@@ -59,7 +63,6 @@ int countOccurrences(Queue<int>& queue, int checkNum)
 		cout << "Данное число не встречается в очереди."
 			<< endl;
 	}
-	return counter;
 }
 
 void displayMenu()
@@ -78,61 +81,60 @@ void displayMenu()
 int main()
 {
 	setlocale(LC_ALL, "RU");
-	Queue <int> queue;
+	Queue<int> queue;
 	while (true)
 	{
-
 		int choice;
 		displayMenu();
 		cin >> choice;
 		switch (choice)
 		{
-		case 1: 
-			int input;
-			cout << "Введите элемент для добавление в очередь: ";
-			cin >> input;
-			queue.queue(input);
-			break;
+			case 1: 
+				int input;
+				cout << "Введите элемент для добавление в очередь: ";
+				cin >> input;
+				queue.queue(input);
+				break;
 
-		case 2: 
-			cout << "Из очереди было извлечено значение: "
-				<< queue.unqueue()
-				<< endl;
-			break;
+			case 2: 
+				cout << "Из очереди было извлечено значение: "
+					<< queue.unqueue()
+					<< endl;
+				break;
 
-		case 3: 
-			cout << queue.count()
-				<< endl;
-			break;
+			case 3: 
+				cout << queue.count()
+					<< endl;
+				break;
 
-		case 4: 
-			queue.clear();
-			break;
+			case 4: 
+				queue.clear();
+				break;
 
-		case 5: 
-			insertBeforeNegatives(queue);
-			break;
+			case 5: 
+				insertBeforeNegatives(queue);
+				break;
 
-		case 6: 
-			removeNegatives(queue);
-			break;
+			case 6: 
+				removeNegatives(queue);
+				break;
 
-		case 7: 
-		{
-			int checkNum;
-			int counter = 0;
-			cout << "Введите число для проверки: ";
-			cin >> checkNum;
-			countOccurrences(queue, checkNum);
-		}
-			break;
+			case 7:
+			{
+				int checkNum;
+				cout << "Введите число для проверки: ";
+				cin >> checkNum;
+				int counter = countOccurrences(queue, checkNum);
+				displayOccurrences(checkNum, counter);
+			}
+				break;
 
-		case 8: 
-			return 0;
+			case 8: 
+				return 0;
 
-		default:
-			cout << "Нет такой операции \n";
-			break;
+			default:
+				cout << "Нет такой операции \n";
+				break;
 		}
 	}
 	return 0;
