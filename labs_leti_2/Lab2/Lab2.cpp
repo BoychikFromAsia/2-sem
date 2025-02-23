@@ -5,11 +5,9 @@ using namespace std;
 
 void insertBeforeNegatives(Queue<int>& queue)
 {
-	int tempNum;
-	int count = queue.count();
-	for (int i = 0; i < queue.count();i++)
+	for (int i = 0; i < queue.count(); i++)
 	{
-		tempNum = queue.unqueue();
+		int tempNum = queue.unqueue();
 		if (tempNum < 0)
 		{
 			queue.queue(1);
@@ -21,7 +19,6 @@ void insertBeforeNegatives(Queue<int>& queue)
 
 void removeNegatives(Queue<int>& queue)
 {
-	int count = queue.count();
 	for (int i = 0; i < queue.count(); i++)
 	{
 		int tempNum = queue.unqueue();
@@ -36,13 +33,9 @@ void removeNegatives(Queue<int>& queue)
 	}
 }
 
-int countOccurrences(Queue<int>& queue, int counter)
+int countOccurrences(Queue<int>& queue, int checkNum)
 {
-	int checkNum;
-	cout << "Введите число для проверки: ";
-
-	cin >> checkNum;
-	counter = 0;
+	int counter = 0;
 	for (int i = 0; i < queue.count(); i++)
 	{
 		int tempNum = queue.unqueue();
@@ -88,8 +81,8 @@ int main()
 	Queue <int> queue;
 	while (true)
 	{
+
 		int choice;
-		int counter = 0;
 		displayMenu();
 		cin >> choice;
 		switch (choice)
@@ -116,7 +109,7 @@ int main()
 			queue.clear();
 			break;
 
-		case 5:  
+		case 5: 
 			insertBeforeNegatives(queue);
 			break;
 
@@ -125,7 +118,13 @@ int main()
 			break;
 
 		case 7: 
-			countOccurrences(queue, counter);
+		{
+			int checkNum;
+			int counter = 0;
+			cout << "Введите число для проверки: ";
+			cin >> checkNum;
+			countOccurrences(queue, checkNum);
+		}
 			break;
 
 		case 8: 

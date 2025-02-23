@@ -5,14 +5,13 @@
 using namespace std;
 
 /// <summary>
-/// Класс Stack реализует стек с использованием связного списка.
-/// Стек работает по принципу "последний пришел — первый вышел" (LIFO).
+/// Класс Queue реализует очередь с использованием связного списка.
+/// Очередь работает по принципу "первый пришел — первый вышел" (FIFO).
 /// </summary>
 template <typename T>
 class Queue
 {
 private:
-
 	Container<T>* top;
 	Container<T>* bottom;
 	int counter;
@@ -87,7 +86,7 @@ public:
 	/// </summary>
 	void clear()
 	{
-		while (top != 0)
+		while (top != nullptr)
 		{
 			Container<T>* temp = top->next;
 			delete top;
