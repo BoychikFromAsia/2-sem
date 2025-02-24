@@ -68,6 +68,7 @@ public:
 		T value = bottom->data;
 		delete bottom;
 		bottom = temp;
+		delete temp;
 		counter--;
 		return value;
 	}
@@ -93,6 +94,9 @@ public:
 			delete top;
 		}
 		bottom = nullptr;
+		delete bottom;
+		top = nullptr;
+		delete top;
 		counter = 0;
-	}
+	}	
 };
