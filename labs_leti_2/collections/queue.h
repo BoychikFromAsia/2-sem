@@ -88,12 +88,11 @@ public:
 	{
 		while (top != nullptr)
 		{
-			Container<T>* temp = top->next;
+			Container<T>* temp = top;
+			top = top->next;
 			delete top;
-			top = temp;
 		}
 		bottom = nullptr;
-		top = nullptr;
 		counter = 0;
 	}
 };

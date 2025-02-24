@@ -127,7 +127,7 @@ int main()
 				int counter = countOccurrences(queue, checkNum);
 				displayOccurrences(checkNum, counter);
 			}
-				break;
+			break;
 
 			case 8: 
 				return 0;
