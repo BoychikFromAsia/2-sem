@@ -39,7 +39,6 @@ public:
 		Container<T>* temp = new Container<T>;
 		temp->data = value;
 		temp->next = nullptr;
-
 		if (bottom == nullptr)
 		{
 			bottom = temp;
@@ -92,7 +91,7 @@ public:
 			top = top->next;
 			delete temp;
 		}
-		delete bottom;
+		bottom = nullptr;
 		counter = 0;
 	}	
 };
