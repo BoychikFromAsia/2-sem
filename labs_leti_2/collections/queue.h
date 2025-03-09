@@ -68,7 +68,6 @@ public:
 		T value = bottom->data;
 		delete bottom;
 		bottom = temp;
-		delete temp;
 		counter--;
 		return value;
 	}
@@ -91,12 +90,9 @@ public:
 		{
 			Container<T>* temp = top;
 			top = top->next;
-			delete top;
+			delete temp;
 		}
-		bottom = nullptr;
 		delete bottom;
-		top = nullptr;
-		delete top;
 		counter = 0;
 	}	
 };
