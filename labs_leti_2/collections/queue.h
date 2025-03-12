@@ -85,13 +85,13 @@ public:
 	/// </summary>
 	void clear()
 	{
-		while (top != nullptr)
+		while (bottom != nullptr)
 		{
-			Container<T>* temp = top;
-			top = top->next;
+			Container<T>* temp = bottom;
+			bottom = bottom->next;
 			delete temp;
 		}
-		bottom = nullptr;
+		top = nullptr;
 		counter = 0;
 	}	
 };
