@@ -48,7 +48,8 @@ int countOccurrences(Queue<int>& queue, int checkNum)
 	return counter;
 }
 
-void displayOccurrences(int checkNum, int counter) {
+void displayOccurrences(int checkNum, int counter)
+{
 	if (counter != 0)
 	{
 		cout << "Число "
