@@ -142,6 +142,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="container.h">
+      <DeploymentContent>true</DeploymentContent>
+    </ClInclude>
+    <ClInclude Include="CycleList.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="stack.h" />

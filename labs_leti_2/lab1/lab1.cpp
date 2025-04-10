@@ -17,7 +17,7 @@ int main()
 			stack.push(input);
 		}
 	}
-
+	stack.swapContain();
 	while (stack.count()) 
 	{
 		int num = stack.pop();

@@ -36,6 +36,22 @@ public:
         counter++;
     }
 
+    T swapContain()
+    {
+        if (top == nullptr)
+        {
+            throw ("Stack is empty");
+        }
+        Container<T>* temp = top;
+        while (temp->next != nullptr)
+        {
+            temp = temp->next;
+        }
+        temp->next = top->next;
+        top->next = nullptr;
+        top = temp;
+    }   
+
     /// <summary>
     /// Удаляет верхний элемент из стека и возвращает его значение.
     /// </summary>
