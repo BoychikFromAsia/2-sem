@@ -42,13 +42,12 @@ public:
 		if (bottom == nullptr)
 		{
 			bottom = temp;
-			top = temp;
 		}
 		else
 		{
 			top->next = temp;
-			top = temp;
 		}
+		top = temp;
 		counter++;
 	}
 

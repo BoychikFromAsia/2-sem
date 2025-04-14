@@ -17,6 +17,33 @@ void insertBeforeNegatives(Queue<int>& queue)
 	}
 }
 
+//Queue<int> backQueue(Queue<int>& queue1, Queue<int>& queue2)
+//{
+//	Queue<int> result;
+//	if (queue1.count() >= 0)
+//	{
+//		int tempNum1 = queue1.unqueue();
+//	}
+//	if (queue2.count() >= 0)
+//	{
+//		int tempNum2 = queue2.unqueue();
+//	}
+//	while (queue1.count() && queue2.count() != 0)
+//	{
+//		if (tempNum1 >= tempNum2)
+//		{
+//			result.queue(tempNum2);
+//			tempNum2 = queue2.unqueue();
+//		}
+//		else
+//		{
+//			result.queue(tempNum1);
+//			tempNum1 = queue1.unqueue();
+//		}
+//	}
+//	
+//}
+
 void removeNegatives(Queue<int>& queue)
 {
 	for (int i = 0; i < queue.count(); i++)
